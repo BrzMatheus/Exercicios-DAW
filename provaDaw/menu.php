@@ -1,3 +1,27 @@
+<?php
+session_start();
+if (!isset($_SESSION['nome'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$nome = $_SESSION['nome'];
+
+// Função para registrar ações
+function registrarAcao($acao) {
+    $log = "log.txt";
+    $nome = $_SESSION['nome'];
+    $registro = "$nome $acao em " . date('Y-m-d H:i:s') . "\n";
+    file_put_contents($log, $registro, FILE_APPEND);
+}
+
+// Registrar ações específicas baseadas nos cliques no menu
+if (isset($_GET['acao'])) {
+    registrarAcao($_GET['acao']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -37,14 +61,13 @@
     <section class="menu-container">
         <h1>Menu Principal</h1>
         <section class="menu">
-            
-            <a href="listar_perguntas.php">Listar Todos as perguntas</a>
-            <a href="listar_um.php">Buscar Pergunta</a>
-            <a href="alterar_perguntas.php">Alterar Perguntas</a>
-            <a href="alterar_respostas.php">Alterar Respostas</a>
-            <a href="criar_perguntas.php">Criar Perguntas</a>
-            <a href="login.php">Encerrar sessao <a>
-            <a href="excluir_perguntas.php">Excluir pergntas</a>
+            <a href="criar_perguntas.php?acao=Criou uma pergunta">Criar Perguntas</a>
+            <a href="listar_perguntas.php?acao=Listou todas as perguntas">Responder Perguntas</a>
+            <a href="listar_um.php?acao=Buscou uma pergunta">Buscar Pergunta</a>
+            <a href="alterar_perguntas.php?acao=Alterou perguntas">Alterar Perguntas</a>
+            <a href="alterar_respostas.php?acao=Alterou respostas">Alterar Respostas</a>
+            <a href="excluir.php?acao=Excluiu perguntas">Excluir Perguntas</a>
+            <a href="logout.php?acao=Encerrou a sessão">Encerrar Sessão</a>
         </section>
     </section>
 </body>
