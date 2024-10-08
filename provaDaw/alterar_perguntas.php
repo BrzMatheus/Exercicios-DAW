@@ -15,6 +15,7 @@ function lerPerguntas($arquivo) {
     $perguntas = [];
     if (file_exists($arquivo)) {
         $linhas = file($arquivo);
+        
         for ($i = 0; $i < count($linhas); $i += 6) {
             $pergunta = trim($linhas[$i]);
             $resposta1 = trim($linhas[$i + 1]);
