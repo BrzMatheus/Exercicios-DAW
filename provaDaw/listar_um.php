@@ -10,7 +10,7 @@ $perguntas_arquivo = "perguntas.txt";
 $mensagem = "";
 $pergunta_encontrada = null;
 
-function lerPerguntas($arquivo) {
+ function lerPerguntas($arquivo) {
     $perguntas = [];
     if (file_exists($arquivo)) {
         $linhas = file($arquivo);
