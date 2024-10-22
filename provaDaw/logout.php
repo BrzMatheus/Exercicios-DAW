@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['nome'])) {
+  if (isset($_SESSION['nome'])) {
     $nome = $_SESSION['nome'];
     $log = "log.txt";
     $acao = "$nome saiu do sistema em " . date('Y-m-d H:i:s') . "\n";
