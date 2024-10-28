@@ -5,7 +5,7 @@ if (!isset($_SESSION['nome'])) {
     exit();
 }
 
-$perguntas_arquivo = "perguntas.txt";
+$perguntas_arquivo =  "perguntas.txt";
 $log_arquivo = "log.txt";
 $mensagem = "";
 $perguntas = [];
